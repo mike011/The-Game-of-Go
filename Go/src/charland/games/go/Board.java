@@ -48,6 +48,11 @@ public class Board {
         }
     }
 
+    /**
+     * Creates an empty game board.
+     * 
+     * @return An empty game board.
+     */
     private static short[][] createEmptyBoard() {
         // Initialize the game board.
         short gameBoard[][] = new short[SIZE][SIZE];
@@ -120,7 +125,9 @@ public class Board {
      *            The y location.
      */
     void occupyBlack(int x, int y) {
-        gameBoard[x][y] = BLACK;
+        if (gameBoard[x][y] == EMPTY) {
+            gameBoard[x][y] = BLACK;
+        }
     }
 
     /**
@@ -132,7 +139,9 @@ public class Board {
      *            The y location.
      */
     void occupyWhite(int x, int y) {
-        gameBoard[x][y] = WHITE;
+        if (gameBoard[x][y] == EMPTY) {
+            gameBoard[x][y] = WHITE;
+        }
     }
 
     /**
@@ -192,7 +201,7 @@ public class Board {
      * 
      * @return How many liberties the location has, -1 if the cell is unoccupied.
      */
-    int checkEachLiberty(int x, int y, short colour, short[][] locationslookedAt) {
+    private int checkEachLiberty(int x, int y, short colour, short[][] locationslookedAt) {
         int liberties = 0;
         if (locationslookedAt[x][y] == EMPTY) {
             locationslookedAt[x][y] = 0;
@@ -240,5 +249,4 @@ public class Board {
         }
         return liberties;
     }
-
 }

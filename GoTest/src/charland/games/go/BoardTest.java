@@ -80,7 +80,7 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test a spot which should have the max amount of liberties.  <br>
+     * Test a spot which should have the max amount of liberties. <br>
      * <code>
      * | | | | | |
      * -----------
@@ -324,5 +324,69 @@ public class BoardTest extends TestCase {
         int x = Board.SIZE - 1, y = Board.SIZE - 1;
         b.occupyBlack(x, y);
         Assert.assertEquals("Amount of liberties wrong", 2, b.checkLiberties(x, y, Board.BLACK));
+    }
+
+    /**
+     * Test a spot which should has a different coloured stone beside it. <br>
+     * <code>
+     * | | | | | | |
+     * -------------
+     * | | |*|$| | |
+     * ------------- 
+     * | |*|B|W|$| |
+     * ------------- 
+     * | | |*|$| | | 
+     * ------------- 
+     * | | | | | | | 
+     * </code>
+     */
+    public void testLibertiesCheck_Two_LeftStone() {
+        Board b = new Board();
+        int x = 2, y = 1;
+        b.occupyBlack(x, y);
+        b.occupyWhite(x + 1, y);
+        Assert.assertEquals("Amount of liberties wrong", 3, b.checkLiberties(x, y, Board.BLACK));
+        Assert.assertEquals("Amount of liberties wrong", 3, b.checkLiberties(x + 1, y, Board.WHITE));
+    }
+
+    /**
+     * Test trying to commit suicide. <br>
+     * <code>
+     * | | |B| | | |
+     * -------------
+     * | |B|W|B| | |
+     * ------------- 
+     * |B|W| |W|B| |
+     * ------------- 
+     * | |B|W|B| | | 
+     * ------------- 
+     * | | |B| | | | 
+     * </code>
+     */
+    public void testSuicide() {
+        
+        // Setup
+        Board b = new Board();
+        b.occupyBlack(3, 0);
+        
+        b.occupyBlack(2, 1);
+        b.occupyWhite(3, 1);
+        b.occupyBlack(4, 1);
+        
+        b.occupyBlack(0, 2);
+        b.occupyWhite(1, 2);
+        b.occupyWhite(3, 2);
+        b.occupyBlack(4, 2);
+        
+        b.occupyBlack(2, 3);
+        b.occupyWhite(3, 3);
+        b.occupyBlack(4, 3);
+        
+        b.occupyBlack(3, 4);
+        
+        // Test
+        b.occupyWhite(2, 2);
+        
+        // This test should fail, becuase white is commiting suicide.
     }
 }
