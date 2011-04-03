@@ -114,9 +114,9 @@ public class PuzzleView extends View {
         short[][] board = game.getGameBoard();
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board.length; y++) {
-                if (board[x][y] > 0) {
+                if (board[x][y] != Board.EMPTY) {
                     Paint colour = white;
-                    if (board[x][y] == 1) {
+                    if (board[x][y] == Board.BLACK) {
                         colour = black;
                     }
                     canvas.drawCircle(left + x * cellWidth, top + y * cellWidth, cellWidth / 2, colour);

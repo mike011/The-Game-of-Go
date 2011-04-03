@@ -23,10 +23,10 @@ public class Game extends Activity {
      * The only instance of the game board.
      */
     private Board board;
-    
+
     /** The amount of black stones that have been captured. */
     private int blackStonesCaptured;
-    
+
     /** The amount of white stones that have been captured. */
     private int whiteStonesCaptured;
 
@@ -40,7 +40,7 @@ public class Game extends Activity {
         } else {
             board = new Board();
         }
-        
+
         puzzle = new PuzzleView(this);
         setContentView(puzzle);
         puzzle.requestFocus();
@@ -59,16 +59,19 @@ public class Game extends Activity {
      * @return Did the spot get occupied?
      */
     public boolean playTurn(int x, int y) {
-        if (board.isOccupied(x, y) == Board.EMPTY) {
+        int occupied = board.isOccupied(x, y);
+        if (occupied != Board.EMPTY) {
+            Log.d(Go.TAG, "Empty spot not found");
             return true;
         }
-        if (turn % 2 == 0) {
+        boolean whosTurn = turn % 2 == 0;
+        if (whosTurn) {
             board.occupyBlack(x, y);
         } else {
             board.occupyWhite(x, y);
         }
 
-        if (board.checkAllLibertiesFor(turn % 2 == 0 ? Board.BLACK : Board.WHITE)) {
+        if (board.checkAllLibertiesFor(whosTurn ? Board.BLACK : Board.WHITE)) {
 
             // TODO: This call is inefficient and should be looked at later to just redraw the stones removed.
             puzzle.invalidate();
