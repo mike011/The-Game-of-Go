@@ -5,17 +5,17 @@ public class Board {
     /**
      * The cell is empty.
      */
-    static final short EMPTY = 0;
+    static final short EMPTY = -1;
 
     /**
      * The cell is occupied by black.
      */
-    static final short BLACK = 1;
+    static final short BLACK = 0;
 
     /**
      * The cell is occupied by white.
      */
-    static final short WHITE = 2;
+    static final short WHITE = 1;
 
     /**
      * The size of one side of the game board.
@@ -42,17 +42,22 @@ public class Board {
      */
     Board(short[][] newBoard) {
         if (newBoard == null) {
-            // Initialize the game board.
-            gameBoard = new short[SIZE][SIZE];
-            for (int a = 0; a < SIZE; a++) {
-                gameBoard[a] = new short[SIZE];
-                for (int b = 0; b < SIZE; b++) {
-                    gameBoard[a][b] = EMPTY;
-                }
-            }
+            gameBoard = createEmptyBoard();
         } else {
             gameBoard = newBoard;
         }
+    }
+
+    private static short[][] createEmptyBoard() {
+        // Initialize the game board.
+        short gameBoard[][] = new short[SIZE][SIZE];
+        for (int a = 0; a < SIZE; a++) {
+            gameBoard[a] = new short[SIZE];
+            for (int b = 0; b < SIZE; b++) {
+                gameBoard[a][b] = EMPTY;
+            }
+        }
+        return gameBoard;
     }
 
     /**
@@ -170,38 +175,70 @@ public class Board {
      * @return How many liberties the location has, -1 if the cell is unoccupied.
      */
     int checkLiberties(int x, int y, short colour) {
+        return checkEachLiberty(x, y, colour, createEmptyBoard());
+    }
+
+    /**
+     * Checks the liberties for one location.
+     * 
+     * @param x
+     *            The x location.
+     * @param y
+     *            The y location.
+     * @param colour
+     *            Look at this persons liberties.
+     * @param locationslookedAt
+     *            All the spots that have been covered to prevent infinite recursions.
+     * 
+     * @return How many liberties the location has, -1 if the cell is unoccupied.
+     */
+    int checkEachLiberty(int x, int y, short colour, short[][] locationslookedAt) {
         int liberties = 0;
-        if (isOccupied(x, y) != Board.EMPTY) {
-            // look left
-            if (x > 0) {
-                if (isOccupied(x - 1, y) == Board.EMPTY) {
-                    ++liberties;
-                } else if (isOccupied(x - 1, y) == colour) {
-                    liberties += checkLiberties(x - 1, y, colour);
-                }
-            }
+        if (locationslookedAt[x][y] == EMPTY) {
+            locationslookedAt[x][y] = 0;
 
-            // look right
-            if (x + 1 < SIZE) {
-                if (isOccupied(x + 1, y) == Board.EMPTY) {
-                    ++liberties;
-                } else if (isOccupied(x + 1, y) == colour) {
-                    liberties += checkLiberties(x + 1, y, colour);
-                }
-            }
+            if (isOccupied(x, y) != Board.EMPTY) {
+                // look left
+                liberties = look(x - 1, y, colour, locationslookedAt);
 
-            // look up
-            if (y > 0 && isOccupied(x, y - 1) == Board.EMPTY) {
-                ++liberties;
-            }
+                // look right
+                liberties += look(x + 1, y, colour, locationslookedAt);
 
-            // look down
-            if (y + 1 < SIZE && isOccupied(x, y + 1) == Board.EMPTY) {
-                ++liberties;
+                // look up
+                liberties += look(x, y - 1, colour, locationslookedAt);
+
+                // look down
+                liberties += look(x, y + 1, colour, locationslookedAt);
+            } else {
+                liberties = -1;
             }
-        } else {
-            liberties = -1;
         }
         return liberties;
     }
+
+    /**
+     * Look in a direction for a liberties.
+     * 
+     * @param x
+     *            The x location.
+     * @param y
+     *            The y location.
+     * @param colour
+     *            Look at this persons liberties.
+     * @param locationslookedAt
+     *            Where you've looked.
+     * @return
+     */
+    private int look(int x, int y, short colour, short[][] locationslookedAt) {
+        int liberties = 0;
+        if (x >= 0 && x < SIZE && y >= 0 && y < SIZE) {
+            if (isOccupied(x, y) == EMPTY) {
+                ++liberties;
+            } else if (isOccupied(x, y) == colour) {
+                liberties += checkEachLiberty(x, y, colour, locationslookedAt);
+            }
+        }
+        return liberties;
+    }
+
 }

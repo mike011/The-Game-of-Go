@@ -80,7 +80,18 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test a spot which should have the max amount of liberties.
+     * Test a spot which should have the max amount of liberties.  <br>
+     * <code>
+     * | | | | | |
+     * -----------
+     * | | |*| | |
+     * ----------- 
+     * | |*|S|*| |
+     * ----------- 
+     * | | |*| | | 
+     * ----------- 
+     * | | | | | | 
+     * </code>
      */
     public void testLibertiesCheck_Four() {
         Board b = new Board();
@@ -90,7 +101,18 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test a spot which should have the max amount of liberties and a stone to the left adding those liberties to the total.
+     * Test a spot which should have the max amount of liberties and a stone to the left adding those liberties to the total. <br>
+     * <code>
+     * | | | | | | |
+     * -------------
+     * | | |*|*| | |
+     * ------------- 
+     * | |*|2|1|*| |
+     * ------------- 
+     * | | |*|*| | | 
+     * ------------- 
+     * | | | | | | | 
+     * </code>
      */
     public void testLibertiesCheck_Multi_LeftStone() {
         Board b = new Board();
@@ -102,7 +124,18 @@ public class BoardTest extends TestCase {
 
     /**
      * Test a spot which should have the max amount of liberties and a stone to the right adding those liberties to the
-     * total.
+     * total. <br>
+     * <code>
+     * | | | | | | |
+     * -------------
+     * | | |*|*| | |
+     * ------------- 
+     * | |*|1|2|*| |
+     * ------------- 
+     * | | |*|*| | | 
+     * ------------- 
+     * | | | | | | | 
+     * </code>
      */
     public void testLibertiesCheck_Multi_RightStone() {
         Board b = new Board();
@@ -114,7 +147,20 @@ public class BoardTest extends TestCase {
 
     /**
      * Test a spot which should have the max amount of liberties and a stone to the below adding those liberties to the
-     * total.
+     * total. <br>
+     * <code>
+     * | | | | | |
+     * -----------
+     * | | |*| | |
+     * ----------- 
+     * | |*|1|*| |
+     * ----------- 
+     * | |*|2|*| | 
+     * ----------- 
+     * | | |*| | |
+     * ----------- 
+     * | | | | | |
+     * </code>
      */
     public void testLibertiesCheck_Multi_DownStone() {
         Board b = new Board();
@@ -126,7 +172,20 @@ public class BoardTest extends TestCase {
 
     /**
      * Test a spot which should have the max amount of liberties and a stone to the above adding those liberties to the
-     * total.
+     * total. <br>
+     * <code>
+     * | | | | | |
+     * -----------
+     * | | |*| | |
+     * ----------- 
+     * | |*|2|*| |
+     * ----------- 
+     * | |*|1|*| | 
+     * ----------- 
+     * | | |*| | | 
+     * ----------- 
+     * | | | | | |
+     * </code>
      */
     public void testLibertiesCheck_Multi_UpStone() {
         Board b = new Board();
@@ -137,7 +196,13 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test the top left corner.
+     * Test the top left corner. <br>
+     * <code>
+     * ___________
+     * ||S|*| | 
+     * ----------- 
+     * ||*| | | 
+     * </code>
      */
     public void testLibertiesCheck_TopLeft() {
         Board b = new Board();
@@ -147,7 +212,13 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test the top side.
+     * Test the top side. <br>
+     * <code>
+     * ___________ 
+     * | |*|S|*| | 
+     * ----------- 
+     * | | |*| | | 
+     * </code>
      */
     public void testLibertiesCheck_TopSide() {
         Board b = new Board();
@@ -157,7 +228,15 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test the left side.
+     * Test the left side. <br>
+     * <code>
+     * ----------- 
+     * ||*| | |  
+     * -----------
+     * ||S|*| | 
+     * ----------- 
+     * ||*| | | 
+     * </code>
      */
     public void testLibertiesCheck_LeftSide() {
         Board b = new Board();
@@ -167,7 +246,13 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test the top right corner.
+     * Test the top right corner. <br>
+     * <code>
+     * ________ 
+     * | |*|S||
+     * -------- 
+     * | | |*||
+     * </code>
      */
     public void testLibertiesCheck_TopRight() {
         Board b = new Board();
@@ -177,7 +262,14 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test the right side.
+     * Test the right side. <br>
+     * <code>
+     * | | ||
+     * | |*||
+     * |*|S||
+     * | |*||
+     * | | ||
+     * </code>
      */
     public void testLibertiesCheck_RightSide() {
         Board b = new Board();
@@ -187,7 +279,13 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test the bottom left corner.
+     * Test the bottom left corner. <br>
+     * <code>
+     * ||*| | |
+     * -------- 
+     * ||S|*| |
+     * ________ 
+     * </code>
      */
     public void testLibertiesCheck_BottomLeft() {
         Board b = new Board();
@@ -197,7 +295,13 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test the bottom side.
+     * Test the bottom side. <br>
+     * <code>
+     * | | |*| | |
+     * -----------
+     * | |*|S|*| |
+     * ___________
+     * </code>
      */
     public void testLibertiesCheck_BottomSide() {
         Board b = new Board();
@@ -207,7 +311,13 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test the bottom right corner.
+     * Test the bottom right corner. <br>
+     * <code>
+     * | | |*||
+     * -------- 
+     * | |*|S||
+     * ________ 
+     * </code>
      */
     public void testLibertiesCheck_BottomRight() {
         Board b = new Board();
