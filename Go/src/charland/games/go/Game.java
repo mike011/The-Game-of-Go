@@ -68,26 +68,31 @@ public class Game extends Activity {
      * @return Did the spot get occupied?
      */
     public boolean playTurn(int x, int y) {
+        boolean turnPlayed = false;
         int occupied = board.isOccupied(x, y);
         if (occupied != Board.EMPTY) {
             Log.d(Go.TAG, "Empty spot not found");
-            return false;
+            turnPlayed = false;
         }
         boolean whosTurn = turn % 2 == 0;
         if (whosTurn) {
-            board.occupyBlack(x, y);
+            turnPlayed = board.occupyBlack(x, y);
         } else {
-            board.occupyWhite(x, y);
+            turnPlayed = board.occupyWhite(x, y);
         }
 
-        if (board.checkAllLibertiesFor(whosTurn ? Board.BLACK : Board.WHITE)) {
+      //  System.out.println(board.toString());
+        if (turnPlayed) {
+            if (board.checkAllLibertiesFor(!whosTurn ? Board.BLACK : Board.WHITE)) {
 
-            // TODO: This call is inefficient and should be looked at later to just redraw the stones removed.
-            puzzle.invalidate();
+                if (puzzle != null) {
+                    // TODO: This call is inefficient and should be looked at later to just redraw the stones removed.
+                    puzzle.invalidate();
+                }
+            }
+            ++turn;
         }
-
-        ++turn;
-        return true;
+        return turnPlayed;
     }
 
     @Override

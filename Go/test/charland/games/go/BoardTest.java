@@ -348,45 +348,4 @@ public class BoardTest extends TestCase {
         Assert.assertEquals("Amount of liberties wrong", 3, b.checkLiberties(x, y, Board.BLACK));
         Assert.assertEquals("Amount of liberties wrong", 3, b.checkLiberties(x + 1, y, Board.WHITE));
     }
-
-    /**
-     * Test trying to commit suicide at T as white. <br>
-     * <code>
-     * | | |B| | | |
-     * -------------
-     * | |B|W|B| | |
-     * ------------- 
-     * |B|W|T|W|B| |
-     * ------------- 
-     * | |B|W|B| | | 
-     * ------------- 
-     * | | |B| | | | 
-     * </code>
-     */
-    public void testSuicide() {
-        
-        // Setup
-        Board b = new Board();
-        b.occupyBlack(3, 0);
-        
-        b.occupyBlack(2, 1);
-        b.occupyWhite(3, 1);
-        b.occupyBlack(4, 1);
-        
-        b.occupyBlack(0, 2);
-        b.occupyWhite(1, 2);
-        b.occupyWhite(3, 2);
-        b.occupyBlack(4, 2);
-        
-        b.occupyBlack(2, 3);
-        b.occupyWhite(3, 3);
-        b.occupyBlack(4, 3);
-        
-        b.occupyBlack(3, 4);
-        
-        // Test
-        b.occupyWhite(2, 2);
-        
-        Assert.fail("This test should fail, because white is committing suicide.");
-    }
 }
