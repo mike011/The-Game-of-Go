@@ -3,8 +3,11 @@
  */
 package charland.games.go;
 
-import android.os.Bundle;
-import android.test.mock.MockContext;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import com.xtremelabs.robolectric.RobolectricTestRunner;
+
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
@@ -12,6 +15,7 @@ import junit.framework.TestCase;
  * @author Michael
  * 
  */
+@RunWith(RobolectricTestRunner.class)
 public class GameTest extends TestCase {
 
     /**
@@ -24,6 +28,7 @@ public class GameTest extends TestCase {
      * |  |  |B7|  |  |  | 
      * </code>
      */
+    @Test
     public void testPlayTurn() {
 
         // Setup
