@@ -350,13 +350,13 @@ public class BoardTest extends TestCase {
     }
 
     /**
-     * Test trying to commit suicide. <br>
+     * Test trying to commit suicide at T as white. <br>
      * <code>
      * | | |B| | | |
      * -------------
      * | |B|W|B| | |
      * ------------- 
-     * |B|W| |W|B| |
+     * |B|W|T|W|B| |
      * ------------- 
      * | |B|W|B| | | 
      * ------------- 
@@ -387,6 +387,6 @@ public class BoardTest extends TestCase {
         // Test
         b.occupyWhite(2, 2);
         
-        // This test should fail, becuase white is commiting suicide.
+        Assert.fail("This test should fail, because white is committing suicide.");
     }
 }

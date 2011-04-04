@@ -111,7 +111,7 @@ public class PuzzleView extends View {
         Paint white = new Paint();
         white.setColor(getResources().getColor(R.color.white_stone));
 
-        short[][] board = game.getGameBoard();
+        short[][] board = game.getGameBoard().getBoard();
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board.length; y++) {
                 if (board[x][y] != Board.EMPTY) {
@@ -188,7 +188,7 @@ public class PuzzleView extends View {
             return super.onTouchEvent(event);
         select((int) ((event.getX() - cellWidth / 2) / cellWidth), (int) ((event.getY() - cellWidth / 2) / cellWidth));
         Log.d(Go.TAG, "onTouchEvent: x " + selX + ", y " + selY);
-        if (game.playTurn(selX, selY)) {
+        if (!game.playTurn(selX, selY)) {
             Toast toast = Toast.makeText(game, R.string.no_moves_label, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();

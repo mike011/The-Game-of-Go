@@ -35,15 +35,24 @@ public class Game extends Activity {
         super.onCreate(savedInstanceState);
 
         Log.d(Go.TAG, "onCreate");
+        createBoard(savedInstanceState);
+
+        puzzle = new PuzzleView(this);
+        setContentView(puzzle);
+        puzzle.requestFocus();
+    }
+
+    /**
+     * Creates the board.
+     * 
+     * @param savedInstanceState
+     */
+    void createBoard(Bundle savedInstanceState) {
         if (savedInstanceState != null && savedInstanceState.containsKey(GAME_BOARD)) {
             board = new Board(savedInstanceState.getShortArray(GAME_BOARD));
         } else {
             board = new Board();
         }
-
-        puzzle = new PuzzleView(this);
-        setContentView(puzzle);
-        puzzle.requestFocus();
     }
 
     /** Who's turn is it? */
@@ -62,7 +71,7 @@ public class Game extends Activity {
         int occupied = board.isOccupied(x, y);
         if (occupied != Board.EMPTY) {
             Log.d(Go.TAG, "Empty spot not found");
-            return true;
+            return false;
         }
         boolean whosTurn = turn % 2 == 0;
         if (whosTurn) {
@@ -78,7 +87,7 @@ public class Game extends Activity {
         }
 
         ++turn;
-        return false;
+        return true;
     }
 
     @Override
@@ -90,8 +99,8 @@ public class Game extends Activity {
     /**
      * @return The game board.
      */
-    public short[][] getGameBoard() {
-        return board.getBoard();
+    public Board getGameBoard() {
+        return board;
     }
 
     public int getWhiteStonesCaptured() {

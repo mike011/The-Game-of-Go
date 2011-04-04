@@ -249,4 +249,36 @@ public class Board {
         }
         return liberties;
     }
+
+    public String toString() {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append('\n').append("  ");
+
+        for (int y = 0; y < SIZE; ++y) {
+            buffer.append(y).append(' ');
+        }
+        buffer.append('\n');
+        
+        int row = 0;
+        for (int y = 0; y < SIZE / 2; ++y) {
+
+            // Draw Row
+            buffer.append(row++).append(' ');
+            for (int x = 0; x < SIZE; ++x) {
+                buffer.append("--");                
+            }
+            buffer.append('\n');
+
+            // Draw Columns
+            if (y < SIZE - 1) {
+                buffer.append(row++);
+                for (int x = 0; x < SIZE; ++x) {
+                    buffer.append("|  ");
+                }
+                buffer.append('\n');
+            }
+        }
+
+        return buffer.toString();
+    }
 }
