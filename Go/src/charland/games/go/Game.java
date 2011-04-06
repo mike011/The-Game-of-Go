@@ -72,7 +72,6 @@ public class Game extends Activity {
         int occupied = board.isOccupied(x, y);
         if (occupied != Board.EMPTY) {
             Log.d(Go.TAG, "Empty spot not found");
-            turnPlayed = false;
         }
         boolean whosTurn = turn % 2 == 0;
         if (whosTurn) {
@@ -81,9 +80,15 @@ public class Game extends Activity {
             turnPlayed = board.occupyWhite(x, y);
         }
 
-      //  System.out.println(board.toString());
+        // System.out.println(board.toString());
         if (turnPlayed) {
-            if (board.checkAllLibertiesFor(!whosTurn ? Board.BLACK : Board.WHITE)) {
+            int captured = board.checkAllLibertiesFor(!whosTurn ? Board.BLACK : Board.WHITE);
+            if (captured != 0) {
+                if (whosTurn) {
+                    whiteStonesCaptured += captured;
+                } else {
+                    blackStonesCaptured += captured;
+                }
 
                 if (puzzle != null) {
                     // TODO: This call is inefficient and should be looked at later to just redraw the stones removed.
@@ -114,6 +119,13 @@ public class Game extends Activity {
 
     public int getBlackStonesCaptured() {
         return blackStonesCaptured;
+    }
+
+    /**
+     * @return Indicate who's turn it is.
+     */
+    public String getWhosTurnItIs() {
+        return turn % 2 == 0 ? "Black" : "White";
     }
 
 }

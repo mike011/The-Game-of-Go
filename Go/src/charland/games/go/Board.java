@@ -3,8 +3,6 @@ package charland.games.go;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.graphics.Point;
-
 public class Board {
 
     /**
@@ -33,6 +31,11 @@ public class Board {
     private short gameBoard[][];
 
     /**
+     * Keeps a list of points played.
+     */
+    private List<Point> plays;
+
+    /**
      * Creates an empty game board.
      */
     Board() {
@@ -51,6 +54,7 @@ public class Board {
         } else {
             gameBoard = newBoard;
         }
+        plays = new ArrayList<Point>();
     }
 
     /**
@@ -148,7 +152,7 @@ public class Board {
     }
 
     /**
-     * Occupy the cell for Black.
+     * Occupy the cell.
      * 
      * @param x
      *            The x location.
@@ -159,12 +163,17 @@ public class Board {
      * @return Did a spot become occupied?
      */
     private boolean occupy(int x, int y, short colour) {
+        // By default the cell is occupied.
+        boolean occupied = false;
+
         // Check if you are trying to play on top of another stone.
         if (gameBoard[x][y] == EMPTY) {
-            int right = lookBeSide(x + 1, y, colour == BLACK ? WHITE : BLACK, createEmptyBoard());
-            int left = lookBeSide(x - 1, y, colour == BLACK ? WHITE : BLACK, createEmptyBoard());
-            int down = lookBeSide(x, y + 1, colour == BLACK ? WHITE : BLACK, createEmptyBoard());
-            int up = lookBeSide(x, y - 1, colour == BLACK ? WHITE : BLACK, createEmptyBoard());
+            occupied = true;
+
+            int right = look(x + 1, y, colour == BLACK ? WHITE : BLACK, createEmptyBoard());
+            int left = look(x - 1, y, colour == BLACK ? WHITE : BLACK, createEmptyBoard());
+            int down = look(x, y + 1, colour == BLACK ? WHITE : BLACK, createEmptyBoard());
+            int up = look(x, y - 1, colour == BLACK ? WHITE : BLACK, createEmptyBoard());
 
             gameBoard[x][y] = colour;
 
@@ -173,46 +182,22 @@ public class Board {
 
                 // Check the liberties around you to see if any spots of the other colour are in atari.
                 if (right == 1 || left == 1 || down == 1 || up == 1) {
-                    if (right == 1) {
-                        gameBoard[x + 1][y] = EMPTY;
-                    }
-                    if (left == 1) {
-                        gameBoard[x - 1][y] = EMPTY;
-                    }
-                    if (down == 1) {
-                        gameBoard[x][y + 1] = EMPTY;
-                    }
-                    if (up == 1) {
-                        gameBoard[x][y - 1] = EMPTY;
-                    }
-                    return true;
+                    /*
+                     * if (right == 1) { gameBoard[x + 1][y] = EMPTY; } if (left == 1) { gameBoard[x - 1][y] = EMPTY; } if
+                     * (down == 1) { gameBoard[x][y + 1] = EMPTY; } if (up == 1) { gameBoard[x][y - 1] = EMPTY; }
+                     */
+                    occupied = true;
                 } else {
-                    gameBoard[x][y] = EMPTY;
-                    return false;
+                    occupied = false;
                 }
-
             }
-            return true;
         }
 
-        // Cell is occupied.
-        return false;
-    }
-
-    /**
-     * Special method that return negative one to indicate the cell is out of bounds.
-     * 
-     * @param x
-     * @param y
-     * @param colour
-     * @param locationslookedAt
-     * @return
-     */
-    private int lookBeSide(int x, int y, short colour, short[][] locationslookedAt) {
-        if (x < 0 || x > SIZE && y < 0 && y > SIZE) {
-            return -1;
+        if (occupied) {
+            plays.add(new Point(x, y));
         }
-        return look(x, y, colour, locationslookedAt);
+
+        return occupied;
     }
 
     /**
@@ -228,17 +213,21 @@ public class Board {
      * @param colour
      *            Look at this persons liberties.
      * 
-     * @return If any stones were captured.
+     * @return The amount of stones captured.
      */
-    public boolean checkAllLibertiesFor(short colour) {
+    public int checkAllLibertiesFor(short colour) {
         List<Point> capture = new ArrayList<Point>();
-        // First go over the whole board looking for points that have been captured.
-        for (int y = 0; y < SIZE; ++y) {
-            for (int x = 0; x < SIZE; ++x) {
-                if (checkLiberties(x, y, colour) == 0) {
-                    capture.add(new Point(x, y));
+
+        // Since suicide isn't possible go through the liberties of the other player.
+        int index = 0;
+        for (Point p : plays) {
+            if (index % 2 == colour) {
+                if (checkLiberties(p.x, p.y, colour) == 0) {
+                    p.alive = false;
+                    capture.add(p);
                 }
             }
+            ++index;
         }
 
         // Now remove all the captured points.
@@ -247,7 +236,7 @@ public class Board {
         }
 
         // Were any stones captured?
-        return capture.isEmpty();
+        return capture.size();
     }
 
     /**
@@ -351,34 +340,61 @@ public class Board {
         StringBuffer buffer = new StringBuffer();
 
         // Print numbers across the top.
-        buffer.append('\n').append("---");
+        buffer.append('\n').append("----");
         for (int x = 0; x < SIZE; ++x) {
-            buffer.append("---").append(x).append("---");
+
+            buffer.append("--");
+            if (x < 10) {
+                buffer.append('0');
+            }
+            buffer.append(x).append("--");
         }
         buffer.append('\n');
 
         for (int y = 0; y < SIZE; ++y) {
 
             // Draw Row
-            buffer.append(y).append("--");
+            if (y < 10) {
+                buffer.append('0');
+            }
+            buffer.append(y).append("-");
             for (int x = 0; x < SIZE; ++x) {
-                if (gameBoard[x][y] == EMPTY) {
-                    buffer.append("---");
-                    buffer.append("*");
-                    buffer.append("---");
-                } else if (gameBoard[x][y] == BLACK) {
-                    buffer.append("---");
-                    buffer.append("B");
-                    buffer.append("---");
-                } else if (gameBoard[x][y] == WHITE) {
-                    buffer.append("--");
-                    buffer.append("W");
-                    buffer.append("--");
-                }
+                buffer.append("--");
+                buffer.append(getPlay(x, y));
+                buffer.append("--");
             }
             buffer.append('\n');
         }
 
         return buffer.toString();
+    }
+
+    /**
+     * Gets the number in which the turn was executed.
+     * 
+     * @param x
+     *            The x location.
+     * @param y
+     *            The y location.
+     * @return When then play was played.
+     */
+    private String getPlay(int x, int y) {
+        StringBuffer result = new StringBuffer();
+        int turn = 0;
+        for (Point p : plays) {
+            if (p.x == x && p.y == y) {
+                char colour = turn % 2 == 0 ? 'B' : 'W';
+                if(!p.alive) {
+                    colour = turn % 2 == 0 ? 'b' : 'w';
+                }
+                result.append(colour);
+                result.append(turn + 1);
+            }
+            ++turn;
+        }
+        if (result.length() == 0) {
+            result.append("**");
+        }
+        return result.toString();
     }
 }

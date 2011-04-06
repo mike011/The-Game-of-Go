@@ -177,8 +177,9 @@ public class PuzzleView extends View {
             x = y;
             y = 50;
         }
-        canvas.drawText("Black Stones Captured: " + game.getWhiteStonesCaptured(), x, y, light);
-        canvas.drawText("White Stones Captured: " + game.getBlackStonesCaptured(), x, y + 15, light);
+        canvas.drawText("Black Stones Captured: " + game.getBlackStonesCaptured(), x, y, light);
+        canvas.drawText("White Stones Captured: " + game.getWhiteStonesCaptured(), x, y + 15, light);
+        canvas.drawText("Who's turn is it?: " + game.getWhosTurnItIs(), x, y + 30, light);
 
     }
 
