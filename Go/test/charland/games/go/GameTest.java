@@ -147,6 +147,45 @@ public class GameTest extends TestCase {
 
         Assert.assertEquals("Spot should be White" + gameBoard.toString(), Board.WHITE, gameBoard.getBoard()[0][0]);
         Assert.assertEquals("Spot should be empty" + gameBoard.toString(), Board.EMPTY, gameBoard.getBoard()[0][1]);
+        Assert.assertEquals("Spot should be empty" + gameBoard.toString(), Board.EMPTY, gameBoard.getBoard()[1][0]);
+    }
+    
+    /**
+     * Test killing B5, B1, and B3 . <br>
+     * <code>
+     * ------0------1------2------3------4------5------6------7------8---
+     * 0-----B5-----B1----W2------*------*------*------*------*------*---
+     * 1-----B3-----W4-----*------*------*------*------*------*------*--
+     * 2-----W6-----*------*------*------*------*------*------*------*---
+     * 3-----*------*------*------*------*------*------*------*------*---
+     * 4-----*------*------*------*------*------*------*------*------*---
+     * 5-----*------*------*------*------*------*------*------*------*---
+     * 6-----*------*------*------*------*------*------*------*------*---
+     * 7-----*------*------*------*------*------*------*------*------*---
+     * 8-----*------*------*------*------*------*------*------*------*---
+     * </code>
+     */
+    @Test
+    public void testCornerCapture2() {
+
+        // Setup
+        Game g = new Game();
+        g.createBoard(null);
+        g.playTurn(1, 0); // B1
+        g.playTurn(2, 0); // W2
+
+        g.playTurn(0, 1); // B3
+        g.playTurn(1, 1); // W4
+        g.playTurn(0, 0); // B5
+
+        boolean playTurn = g.playTurn(0, 2); // W6
+        Board gameBoard = g.getGameBoard();
+        String string = "White is capturing B1, B3, & B5." + gameBoard.toString();
+        Assert.assertTrue(string, playTurn); 
+
+        Assert.assertEquals("Spot should be White" + gameBoard.toString(), Board.WHITE, gameBoard.getBoard()[0][0]);
         Assert.assertEquals("Spot should be empty" + gameBoard.toString(), Board.EMPTY, gameBoard.getBoard()[0][1]);
+        Assert.assertEquals("Spot should be empty" + gameBoard.toString(), Board.EMPTY, gameBoard.getBoard()[1][0]);
+        Assert.assertEquals("Spot should be empty" + gameBoard.toString(), Board.EMPTY, gameBoard.getBoard()[1][1]);
     }
 }
