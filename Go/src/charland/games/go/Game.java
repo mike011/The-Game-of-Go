@@ -36,10 +36,21 @@ public class Game extends Activity {
 
         Log.d(Go.TAG, "onCreate");
         createBoard(savedInstanceState);
+        setPuzzleView(createPuzzleView());
+    }
 
-        puzzle = new PuzzleView(this);
+    protected void setPuzzleView(PuzzleView pv) {
+        puzzle = pv;
+    }
+
+    /**
+     * Creates the puzzle view.
+     */
+    private PuzzleView createPuzzleView() {
+        PuzzleView puzzle = new PuzzleView(this);
         setContentView(puzzle);
         puzzle.requestFocus();
+        return puzzle;
     }
 
     /**
@@ -72,6 +83,7 @@ public class Game extends Activity {
         int occupied = board.isOccupied(x, y);
         if (occupied != Board.EMPTY) {
             Log.d(Go.TAG, "Empty spot not found");
+            return false;
         }
         boolean whosTurn = turn % 2 == 0;
         if (whosTurn) {

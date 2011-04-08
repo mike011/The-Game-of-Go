@@ -212,4 +212,28 @@ public class PuzzleView extends View {
         getRedrawRect(selX, selY, selRect);
         invalidate(selRect);
     }
+    
+    public float getTopAmount() {
+        return top;
+    }
+
+    public float getLeftAmount() {
+        return left;
+    }
+
+    public float getBottomAmount() {
+        return bottom;
+    }
+
+    public float getRightAmount() {
+        return right;
+    }
+
+    public float getCellWidthAmount() {
+        return cellWidth;
+    }
+
+    public float getWidthAmount() {
+        return width;
+    }
 }

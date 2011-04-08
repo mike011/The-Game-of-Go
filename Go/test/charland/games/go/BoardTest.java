@@ -16,6 +16,17 @@ import com.xtremelabs.robolectric.RobolectricTestRunner;
  */
 @RunWith(RobolectricTestRunner.class)
 public class BoardTest {
+	
+    /**
+     * Make sure everything is empty to start.
+     */
+    @Test
+    public void testConstructor() {
+    	short[][] board = new short[1][1];
+        Board b = new Board(board);
+        Assert.assertEquals("Board not set correctly", board, b.getBoard());
+        
+    }
 
     /**
      * Make sure everything is empty to start.
