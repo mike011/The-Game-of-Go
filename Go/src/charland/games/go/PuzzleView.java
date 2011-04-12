@@ -234,6 +234,7 @@ public class PuzzleView extends View {
                 Toast toast = Toast.makeText(game, R.string.board_printed, Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
+                Log.d(Go.TAG, "Moves so far" + game.getGameBoard().toString());
             }
         }
         return false;
