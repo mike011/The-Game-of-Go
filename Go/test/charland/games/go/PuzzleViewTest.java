@@ -4,12 +4,9 @@
 package charland.games.go;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import android.graphics.Canvas;
 
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 

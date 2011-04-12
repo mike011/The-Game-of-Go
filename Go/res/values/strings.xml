@@ -20,5 +20,5 @@ Go, known as 碁 in Japanese, wéiqí in Chinese and baduk  in Korean, is an anc
 <string name="game_title">Game</string>
 <string name="no_moves_label">Move not allowed</string>
 <string name="not_allowed">Invalid spot</string>
-<string name="keypad_title">Keypad</string>
+<string name="board_printed">Board Printed</string>
 </resources>

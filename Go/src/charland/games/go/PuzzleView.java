@@ -34,6 +34,8 @@ public class PuzzleView extends View {
 
     private float width;
 
+    private Point printBoard;
+
     public PuzzleView(Context context) {
         super(context);
         this.game = (Game) context;
@@ -84,6 +86,7 @@ public class PuzzleView extends View {
         drawTheBoard(canvas);
         drawTheStones(canvas);
         drawTheStats(canvas);
+        drawDebug(canvas);
     }
 
     /**
@@ -168,33 +171,73 @@ public class PuzzleView extends View {
      *            What to draw on.
      */
     private void drawTheStats(Canvas canvas) {
-        
         Paint light = new Paint();
         light.setColor(getResources().getColor(R.color.puzzle_hilite));
         int x = 0;
         int y = (int) ((Board.SIZE + 2) * cellWidth);
-        if(getWidth() > getHeight()) {
+        if (getWidth() > getHeight()) {
             x = y;
             y = 50;
         }
         canvas.drawText("Black Stones Captured: " + game.getBlackStonesCaptured(), x, y, light);
         canvas.drawText("White Stones Captured: " + game.getWhiteStonesCaptured(), x, y + 15, light);
         canvas.drawText("Who's turn is it?: " + game.getWhosTurnItIs(), x, y + 30, light);
+    }
 
+    /**
+     * Used for debugging.
+     * 
+     * @param canvas
+     *            What to draw on.
+     */
+    private void drawDebug(Canvas canvas) {
+
+        Paint light = new Paint();
+        light.setColor(getResources().getColor(R.color.puzzle_hilite));
+
+        if (printBoard == null) {
+            printBoard = new Point(0, 0);
+        }
+        printBoard.x = 0;
+        printBoard.y = (int) ((Board.SIZE + 2) * cellWidth);
+        if (getWidth() > getHeight()) {
+            printBoard.x = printBoard.y;
+            printBoard.y = 50;
+        }
+
+        printBoard.y += 45;
+        canvas.drawText("Print Board", printBoard.x, printBoard.y, light);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() != MotionEvent.ACTION_DOWN)
             return super.onTouchEvent(event);
-        select((int) ((event.getX() - cellWidth / 2) / cellWidth), (int) ((event.getY() - cellWidth / 2) / cellWidth));
-        Log.d(Go.TAG, "onTouchEvent: x " + selX + ", y " + selY);
-        if (!game.playTurn(selX, selY)) {
-            Toast toast = Toast.makeText(game, R.string.no_moves_label, Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
+        int x = (int) ((event.getX() - cellWidth / 2) / cellWidth);
+        int y = (int) ((event.getY() - cellWidth / 2) / cellWidth);
+
+        // Only allow the person to play on the board.
+        if (x >= 0 && x < Board.SIZE && y >= 0 && y < Board.SIZE) {
+            select(x, y);
+            Log.d(Go.TAG, "onTouchEvent: x " + selX + ", y " + selY);
+            if (!game.playTurn(selX, selY)) {
+                Toast toast = Toast.makeText(game, R.string.no_moves_label, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
+            return true;
+        } else {
+            Log.d(Go.TAG, "onTouchEvent: event.x " + event.getX()  + ", printBoard.x " + printBoard.x + ", event.getY " + event.getY()+ ", printBoard.y " + printBoard.y);
+            if (event.getX() >= printBoard.x - 20 && event.getX() <= printBoard.x + 70 & event.getY() >= printBoard.y - 20
+                    && event.getY() <= printBoard.y + 3) {
+
+                Toast toast = Toast.makeText(game, R.string.board_printed, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
         }
-        return true;
+        return false;
+
     }
 
     /**
@@ -212,7 +255,7 @@ public class PuzzleView extends View {
         getRedrawRect(selX, selY, selRect);
         invalidate(selRect);
     }
-    
+
     public float getTopAmount() {
         return top;
     }
