@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10EF4EEB72A4B997774B9409 /* NewGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ACFC01FB75DF84B3B1DE6 /* NewGameView.swift */; };
+		2589266CE7D8F69948090CE4 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E45942A842D0E8CA8672D4 /* GameView.swift */; };
+		44DEA825AE0FB211E59BF15F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1263D3FD02ADFFA31A2EB9 /* Settings.swift */; };
+		5D91CD7BF2E36183948AD0DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36716CC13BBADABF4D741A1C /* Assets.xcassets */; };
+		80D099C270893FB090E8A7E9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1429F046278C0817AFC32F6A /* AboutView.swift */; };
+		8B0FEF748858D27653428AC6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BE1112C7C75A988C8E8E6 /* SettingsView.swift */; };
+		9F113C78BDF872538B9D3DB0 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD49C354077E9C8C68FBADB3 /* BoardView.swift */; };
+		A53EACAE8531DD7A1A979FF6 /* GoEngine in Frameworks */ = {isa = PBXBuildFile; productRef = 9DED7113568D49AA94DE9148 /* GoEngine */; };
+		C8B3130AFCD013995F94B5DA /* GameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD2F0B17D9DE7A59B5FF618 /* GameStore.swift */; };
+		F21384065F4C12B16FEF3723 /* GoGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5680C937385C5E177D7D50 /* GoGameApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1429F046278C0817AFC32F6A /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		36716CC13BBADABF4D741A1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4B5680C937385C5E177D7D50 /* GoGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoGameApp.swift; sourceTree = "<group>"; };
+		795BAD6BA48A17D39FFF6F35 /* GoEngine */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GoEngine; path = GoEngine; sourceTree = SOURCE_ROOT; };
+		92287693DD358E97F5278930 /* GoGame.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = GoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B1263D3FD02ADFFA31A2EB9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		ABD2F0B17D9DE7A59B5FF618 /* GameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStore.swift; sourceTree = "<group>"; };
+		C41BE1112C7C75A988C8E8E6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C4E45942A842D0E8CA8672D4 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		DD49C354077E9C8C68FBADB3 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		DD7ACFC01FB75DF84B3B1DE6 /* NewGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4ECFE2A65172290325F2A96D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A53EACAE8531DD7A1A979FF6 /* GoEngine in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		075165711A6B20733FC037ED = {
+			isa = PBXGroup;
+			children = (
+				FD7BF6DE6FA3D8B2E167E4B7 /* GoGame */,
+				B6E0AF96A3A62677B173CAEB /* Packages */,
+				3121B450154F662B15791623 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3121B450154F662B15791623 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				92287693DD358E97F5278930 /* GoGame.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B6E0AF96A3A62677B173CAEB /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				795BAD6BA48A17D39FFF6F35 /* GoEngine */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		E14311EAD25947B76D3FDC93 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1429F046278C0817AFC32F6A /* AboutView.swift */,
+				DD49C354077E9C8C68FBADB3 /* BoardView.swift */,
+				C4E45942A842D0E8CA8672D4 /* GameView.swift */,
+				DD7ACFC01FB75DF84B3B1DE6 /* NewGameView.swift */,
+				C41BE1112C7C75A988C8E8E6 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FD7BF6DE6FA3D8B2E167E4B7 /* GoGame */ = {
+			isa = PBXGroup;
+			children = (
+				36716CC13BBADABF4D741A1C /* Assets.xcassets */,
+				ABD2F0B17D9DE7A59B5FF618 /* GameStore.swift */,
+				4B5680C937385C5E177D7D50 /* GoGameApp.swift */,
+				9B1263D3FD02ADFFA31A2EB9 /* Settings.swift */,
+				E14311EAD25947B76D3FDC93 /* Views */,
+			);
+			path = GoGame;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5AA858161C679599EDBA059D /* GoGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3A486D59D8256D21E43EAEB /* Build configuration list for PBXNativeTarget "GoGame" */;
+			buildPhases = (
+				0798F3639709F7D24615B51C /* Sources */,
+				9EA08FE3C6F99BFA9CFF99CE /* Resources */,
+				4ECFE2A65172290325F2A96D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoGame;
+			packageProductDependencies = (
+				9DED7113568D49AA94DE9148 /* GoEngine */,
+			);
+			productName = GoGame;
+			productReference = 92287693DD358E97F5278930 /* GoGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0DD57D3EA02EEE918635CDDC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 64513A9229F7F4AC2DADF1A9 /* Build configuration list for PBXProject "GoGame" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 075165711A6B20733FC037ED;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DE1F0B6279580D108B23A96A /* XCLocalSwiftPackageReference "GoEngine" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3121B450154F662B15791623 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5AA858161C679599EDBA059D /* GoGame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9EA08FE3C6F99BFA9CFF99CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D91CD7BF2E36183948AD0DD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0798F3639709F7D24615B51C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80D099C270893FB090E8A7E9 /* AboutView.swift in Sources */,
+				9F113C78BDF872538B9D3DB0 /* BoardView.swift in Sources */,
+				C8B3130AFCD013995F94B5DA /* GameStore.swift in Sources */,
+				2589266CE7D8F69948090CE4 /* GameView.swift in Sources */,
+				F21384065F4C12B16FEF3723 /* GoGameApp.swift in Sources */,
+				10EF4EEB72A4B997774B9409 /* NewGameView.swift in Sources */,
+				44DEA825AE0FB211E59BF15F /* Settings.swift in Sources */,
+				8B0FEF748858D27653428AC6 /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0975D23DF79C2B67EF909759 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Go;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = charland.games.go;
+				PRODUCT_NAME = Go;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5657518E92165D22080F88C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Go;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.board-games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = charland.games.go;
+				PRODUCT_NAME = Go;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		73C338D1CD0D80DA1F8C64D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 2.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		A235BF561543434202D32714 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 2.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64513A9229F7F4AC2DADF1A9 /* Build configuration list for PBXProject "GoGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A235BF561543434202D32714 /* Debug */,
+				73C338D1CD0D80DA1F8C64D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A3A486D59D8256D21E43EAEB /* Build configuration list for PBXNativeTarget "GoGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0975D23DF79C2B67EF909759 /* Debug */,
+				5657518E92165D22080F88C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		DE1F0B6279580D108B23A96A /* XCLocalSwiftPackageReference "GoEngine" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GoEngine;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9DED7113568D49AA94DE9148 /* GoEngine */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GoEngine;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 0DD57D3EA02EEE918635CDDC /* Project object */;
+}
